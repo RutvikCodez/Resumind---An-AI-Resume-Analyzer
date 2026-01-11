@@ -1,20 +1,20 @@
-interface Job {
+type Job = {
   title: string;
   description: string;
   location: string;
   requiredSkills: string[];
-}
+};
 
-interface Resume {
+type Resume = {
   id: string;
   companyName?: string;
   jobTitle?: string;
   imagePath: string;
   resumePath: string;
   feedback: Feedback;
-}
+};
 
-interface Feedback {
+type Feedbackb = {
   overallScore: number;
   ATS: {
     score: number;
@@ -55,4 +55,4 @@ interface Feedback {
       explanation: string;
     }[];
   };
-}
+};
