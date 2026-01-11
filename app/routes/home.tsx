@@ -12,15 +12,15 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
   return (
-    <main className="bg-[url('/images/bg-main.svg')] bg-cover">
+    <main className="bg-[url('/images/bg-main.svg')] bg-cover flex flex-col gap-16 pb-5">
       <Navbar />
-      <section className="main-section">
-        <div className="page-heading py-16">
+      <section className="flex flex-col items-center gap-16">
+        <div className="flex flex-col items-center gap-8 max-w-4xl text-center max-sm:gap-4">
           <h1>Track Your Applications & Resume Ratings</h1>
           <h2>Review your submissions and check AI-powered feedback.</h2>
         </div>
         {resumes.length > 0 && (
-          <div className="resumes-section">
+          <div className="grid grid-cols-3 gap-6 max-w-11/12 mx-auto max-xl:grid-cols-2 max-md:grid-cols-1 w-full">
             {resumes.map((resume, index) => (
               <ResumeCard key={index} {...resume} />
             ))}
