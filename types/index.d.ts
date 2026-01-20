@@ -56,3 +56,7 @@ type Feedbackb = {
     }[];
   };
 };
+
+type fileUploaderProps = {
+  onFileSelect: (file: File | null) => void;
+}
