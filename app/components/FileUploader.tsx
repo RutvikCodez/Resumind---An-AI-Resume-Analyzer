@@ -8,7 +8,7 @@ const FileUploader = ({ onFileSelect }: fileUploaderProps) => {
       const file = acceptedFiles[0] || null;
       onFileSelect(file);
     },
-    [onFileSelect]
+    [onFileSelect],
   );
   const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
     useDropzone({
@@ -23,14 +23,14 @@ const FileUploader = ({ onFileSelect }: fileUploaderProps) => {
     <div className="w-full gradient-border">
       <div {...getRootProps()}>
         <input {...getInputProps()} />
-        <div className="cursor-pointer space-y-4">
+        <div className="cursor-pointer flex flex-col gap-4">
           {file ? (
             <div
-              className="uploader-selected-file"
+              className="flex items-center justify-between p-3 bg-gray-50 rounded-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               <img src="/images/pdf.png" alt="pdf" className="size-10" />
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center gap-3">
                 <div>
                   <p className="text-sm font-medium text-gray-700 truncate max-w-xs">
                     {file.name}
@@ -51,13 +51,15 @@ const FileUploader = ({ onFileSelect }: fileUploaderProps) => {
             </div>
           ) : (
             <div>
-              <div className="mx-auto w-16 h-16 flex items-center justify-center mb-2">
-                <img src="/icons/info.svg" alt="upload" className="size-20" />
+              <div className="flex flex-col gap-2">
+                <div className="mx-auto w-16 h-16 flex items-center justify-center">
+                  <img src="/icons/info.svg" alt="upload" className="size-20" />
+                </div>
+                <p className="text-lg text-gray-500">
+                  <span className="font-semibold">Click to upload</span> or drag
+                  and drop
+                </p>
               </div>
-              <p className="text-lg text-gray-500">
-                <span className="font-semibold">Click to upload</span> or drag
-                and drop
-              </p>
               <p className="text-lg text-gray-500">
                 PDF (max {formatSize(maxFileSize)})
               </p>

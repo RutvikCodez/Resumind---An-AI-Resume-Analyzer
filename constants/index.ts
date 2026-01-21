@@ -246,3 +246,25 @@ export const prepareInstructions = ({
   Provide the feedback using the following format: ${AIResponseFormat}
   Return the analysis as a JSON object, without any other text and without the backticks.
   Do not include any other text or comments.`;
+
+export const inputFields = [
+  {
+    label: "Company Name",
+    name: "company-name",
+    type: "text",
+    placeholder: "Company Name",
+  },
+  {
+    label: "Job Title",
+    name: "job-title",
+    type: "text",
+    placeholder: "Job Title",
+  },
+  {
+    label: "Job Description",
+    name: "job-description",
+    type: "textarea",
+    placeholder: "Job Description",
+    rows: 5,
+  },
+];

@@ -1,3 +1,4 @@
+import { inputFields } from "../../constants";
 import { useState, type FormEvent } from "react";
 import FileUploader from "~/components/FileUploader";
 import Navbar from "~/components/Navbar";
@@ -18,13 +19,13 @@ const upload = () => {
     const jobTitle = formData.get("job-title");
     const jobDescription = formData.get("job-description");
     console.log(file, companyName, jobDescription, jobTitle);
-    
   };
+
   return (
     <main className="bg-[url('/images/bg-main.svg')] bg-cover flex flex-col gap-16 pb-5">
       <Navbar />
       <section className="flex flex-col items-center gap-16">
-        <div className="page-heading py-16">
+        <div className="flex flex-col items-center gap-8 max-w-5xl text-center max-sm:gap-4">
           <h1>Smart feedback for your dream job</h1>
           {isProcessing ? (
             <>
@@ -42,36 +43,32 @@ const upload = () => {
             <form
               id="upload-form"
               onSubmit={handleSubmit}
-              className="flex flex-col gap-4 mt-8"
+              className="flex flex-col gap-4"
             >
-              <div className="form-div">
-                <label htmlFor="company-name">Company Name</label>
-                <input
-                  type="text"
-                  name="company-name"
-                  placeholder="Company Name"
-                  id="company-name"
-                />
-              </div>
-              <div className="form-div">
-                <label htmlFor="job-title">Job Title</label>
-                <input
-                  type="text"
-                  name="job-title"
-                  placeholder="Job Title"
-                  id="job-title"
-                />
-              </div>
-              <div className="form-div">
-                <label htmlFor="job-description">Job Description</label>
-                <textarea
-                  rows={5}
-                  name="job-description"
-                  placeholder="Job Description"
-                  id="job-description"
-                />
-              </div>
-              <div className="form-div">
+              {inputFields.map(({ label, name, placeholder, type, rows }) => (
+                <div
+                  key={name}
+                  className="flex flex-col gap-2 w-full items-start"
+                >
+                  <label htmlFor={name}>{label}</label>
+                  {type === "textarea" ? (
+                    <textarea
+                      rows={rows}
+                      name={name}
+                      placeholder={placeholder}
+                      id={name}
+                    />
+                  ) : (
+                    <input
+                      type={type}
+                      name={name}
+                      placeholder={placeholder}
+                      id={name}
+                    />
+                  )}
+                </div>
+              ))}
+              <div className="flex flex-col gap-2 w-full items-start">
                 <label htmlFor="uploader">Upload Resume</label>
                 <FileUploader onFileSelect={handleFileSelect} />
               </div>
