@@ -2,6 +2,12 @@ import Category from "./Category";
 import ScoreCircle from "./ScoreCircle";
 
 const Summary = ({ feedback }: { feedback: Feedbackb }) => {
+  const categories = [
+    { title: "Tone & Style", score: feedback.toneAndStyle.score },
+    { title: "Content", score: feedback.content.score },
+    { title: "Structure", score: feedback.structure.score },
+    { title: "Skills", score: feedback.skills.score },
+  ];
   return (
     <div className=" bg-white rounded-2xl shadow-md w-full">
       <div className="flex flex-row items-center p-4 gap-8">
@@ -13,10 +19,9 @@ const Summary = ({ feedback }: { feedback: Feedbackb }) => {
           </p>
         </div>
       </div>
-      <Category title="Tone & Style" score={feedback.toneAndStyle.score} />
-      <Category title="Content" score={feedback.content.score} />
-      <Category title="Structure" score={feedback.structure.score} />
-      <Category title="Skills" score={feedback.skills.score} />
+      {categories.map((category, index) => (
+        <Category key={index} {...category} />
+      ))}
     </div>
   );
 };

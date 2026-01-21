@@ -1,4 +1,4 @@
-import ScoreBadge from "./ScoreBadge";
+import DetailsScoreBadge from "./DetailsScoreBadge";
 
 const CategoryHeader = ({
   title,
@@ -10,7 +10,7 @@ const CategoryHeader = ({
   return (
     <div className="flex flex-row gap-4 items-center py-2">
       <p className="text-2xl font-semibold">{title}</p>
-      <ScoreBadge score={categoryScore} />
+      <DetailsScoreBadge score={categoryScore} />
     </div>
   );
 };

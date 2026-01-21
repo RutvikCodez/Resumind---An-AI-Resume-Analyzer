@@ -21,7 +21,8 @@ const Resume = () => {
   const [feedback, setFeedback] = useState<Feedbackb | null>(null);
   const navigate = useNavigate();
   useEffect(() => {
-    if (!isLoading && !auth.isAuthenticated) navigate(`/auth?next=/resume/${id}`);
+    if (!isLoading && !auth.isAuthenticated)
+      navigate(`/auth?next=/resume/${id}`);
   }, [auth.isAuthenticated]);
   useEffect(() => {
     const loadResume = async () => {
@@ -43,7 +44,7 @@ const Resume = () => {
   }, [id]);
   return (
     <main className="pt-0!">
-      <nav className="resume-nav">
+      <nav className="flex flex-row justify-between items-center p-4 border-b border-gray-200">
         <Link to="/" className="back-button">
           <img src="/icons/back.svg" alt="logo" className="w-2.5 h-2.5" />
           <span className="text-gray-800 text-sm font-semibold">
@@ -51,8 +52,9 @@ const Resume = () => {
           </span>
         </Link>
       </nav>
-      <div className="flex flex-row w-full max-lg:flex-col-reverse">
-        <section className="feedback-section bg-[url('/images/bg-small.svg')] bg-cover h-screen sticky top-0 items-center justify-center">
+      {/* <div className="flex flex-row w-full max-lg:flex-col-reverse"> */}
+      <div className="grid grid-cols-2 w-full max-lg:grid-cols-1">
+        <section className="flex flex-col gap-8 max-lg:order-2 p-6 bg-[url('/images/bg-small.svg')] bg-cover h-screen sticky top-0 items-center justify-center">
           {imageUrl && resumeUrl && (
             <div className="animate-in fade-in duration-1000 gradient-border max-sm:m-0 h-[90%] max-wxl:h-fit w-fit">
               <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
@@ -65,13 +67,16 @@ const Resume = () => {
             </div>
           )}
         </section>
-        <section className="feedback-section">
+        <section className="flex flex-col gap-8 max-lg:order-1 p-6">
           <h2 className="text-4xl text-black! font-bold">Resume Review</h2>
           {feedback ? (
             <div className="flex flex-col gap-8 animate-in fade-in duration-1000">
-                <Summary feedback={feedback} />
-                <ATS score={feedback.ATS.score || 0} suggestions={feedback.ATS.tips || []} />
-                <Details feedback={feedback} />
+              <Summary feedback={feedback} />
+              <ATS
+                score={feedback.ATS.score || 0}
+                suggestions={feedback.ATS.tips || []}
+              />
+              <Details feedback={feedback} />
             </div>
           ) : (
             <img
