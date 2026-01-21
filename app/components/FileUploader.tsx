@@ -2,7 +2,7 @@ import { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { formatSize } from "~/lib/utils";
 
-const FileUploader = ({ onFileSelect }: fileUploaderProps) => {
+const FileUploader = ({ onFileSelect, ...props }: fileUploaderProps) => {
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
       const file = acceptedFiles[0] || null;
@@ -20,7 +20,7 @@ const FileUploader = ({ onFileSelect }: fileUploaderProps) => {
   const file = acceptedFiles[0] || null;
   const maxFileSize = 20 * 1024 * 1024;
   return (
-    <div className="w-full gradient-border">
+    <div className="w-full gradient-border" {...props}>
       <div {...getRootProps()}>
         <input {...getInputProps()} />
         <div className="cursor-pointer flex flex-col gap-4">

@@ -67,3 +67,13 @@ type analyzeResumeType = {
   jobDescription: string;
   file: File;
 };
+
+type Suggestion = {
+  type: "good" | "improve";
+  tip: string;
+}
+
+type ATSProps = {
+  score: number;
+  suggestions: Suggestion[];
+}
