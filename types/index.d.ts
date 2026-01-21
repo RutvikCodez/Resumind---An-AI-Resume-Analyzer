@@ -59,4 +59,11 @@ type Feedbackb = {
 
 type fileUploaderProps = {
   onFileSelect: (file: File | null) => void;
-}
+};
+
+type analyzeResumeType = {
+  companyName: string;
+  jobTitle: string;
+  jobDescription: string;
+  file: File;
+};
