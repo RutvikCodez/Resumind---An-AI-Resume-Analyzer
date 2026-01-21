@@ -71,9 +71,11 @@ type analyzeResumeType = {
 type Suggestion = {
   type: "good" | "improve";
   tip: string;
-}
+};
 
 type ATSProps = {
   score: number;
   suggestions: Suggestion[];
-}
+};
+
+type CategoryProps = { title: string; score: number };
